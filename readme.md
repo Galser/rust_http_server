@@ -8,6 +8,8 @@ Part of the course "Learn Rust by Building Real Applications"
 - Now server is accepting connection and reading from the buffer
     Screenshot with echo 
     ![Screenshot of stream read](/screenshots/first_listner_test_with_netcat.png?raw=true "Listner and console screenshot, Netcat")
+- Example of request from Chrome 
+![Screenshot of stream read, Chrome request](/screenshots/first_request_from_chrome.png ?raw=true "Listner screenshot of Chrome request")
 
 
 # TODO
