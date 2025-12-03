@@ -4,7 +4,8 @@
 
 use core::str;
 use server::Server;
-use http::request::Request;
+use http::Request;
+use http::Method;
 
 pub mod server;
 pub mod http;
