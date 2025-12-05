@@ -1,7 +1,13 @@
+use crate::http::method::MethodError;
+use crate::http::{method, request};
+
 use super::method::Method;
 use std::convert::TryFrom;
 use std::error::Error;
 use std::fmt::{Debug, Display, Formatter, Result as FmtResult}; 
+use std::str;
+use std::sync::Arc;
+
 
 /// Request struc
 ///
@@ -15,28 +21,28 @@ impl TryFrom<&[u8]> for Request {
 /// Raw request example 
 /// GET /test HTTP/1.1
 /// Host: 127.0.0.1:8080
-/// Connection: keep-alive
-/// Cache-Control: max-age=0
-/// sec-ch-ua: "Chromium";v="142", "Google Chrome";v="142", "Not_A Brand";v="99"
-/// sec-ch-ua-mobile: ?0
-/// sec-ch-ua-platform: "macOS"
-/// Upgrade-Insecure-Requests: 1
-/// User-Agent: Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/142.0.0.0 Safari/537.36
-/// Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.7
-/// Sec-Fetch-Site: none
-/// Sec-Fetch-Mode: navigate
-/// Sec-Fetch-User: ?1
-/// Sec-Fetch-Dest: document
-/// Accept-Encoding: gzip, deflate, br, zstd
-/// Accept-Language: en-US,en;q=0.9,ru;q=0.8,uk;q=0.7,nl;q=0.6
 
     type Error = ParseError;
 
     fn try_from(buf: &[u8]) -> Result<Self, Self::Error> {
+        let request = str::from_utf8(buf).or(Err(ParseError::InvalidEncoding))?;
+        let (method, request) = get_next_word(request).ok_or(ParseError::InvalidRequest)?; // var shadowing
+        let (path, request) = get_next_word(request).ok_or(ParseError::InvalidRequest)?; // var shadowing
+        let (protocol, _) = get_next_word(request).ok_or(ParseError::InvalidRequest)?; // var shadowing
+        if protocol != "HTTP/1.1" { 
+            return Err(ParseError::InvalidProtocol);
+        }
+        let method:Method = method.parse()?;  
         unimplemented!()
     }    
 }
 
+fn get_next_word(request: &str) -> Option<(&str, &str)> {
+    for (i,c) in request.chars().enumerate() {
+        if c == ' ' || c == '\r'  { return  Some((&request[..i], &request[i+1..]));}
+    };
+    None
+}    
 
 pub enum ParseError {
     InvalidRequest,
@@ -57,6 +63,13 @@ impl Debug for ParseError {
         write!(f, "{}!", self.message())
     }
 }
+
+impl From<MethodError> for ParseError {
+    fn from(_:MethodError) -> Self {
+        Self::InvalidMethod
+    }
+}
+
 
 impl ParseError {
     fn message(&self) -> &str {
