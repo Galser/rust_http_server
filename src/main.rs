@@ -1,11 +1,9 @@
 //! Simple HTTP Server
 //! main
 //!
+#![allow(dead_code)]
 
-use core::str;
 use server::Server;
-use http::Request;
-use http::Method;
 
 pub mod server;
 pub mod http;

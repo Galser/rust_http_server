@@ -20,6 +20,7 @@ impl FromStr for Method {
 }
 
 /// HTTP Methods
+#[derive(Debug)]
 pub enum Method {
     GET,
     DELETE,
@@ -32,4 +33,5 @@ pub enum Method {
     PATCH,
 }
 
+#[derive(Debug)]
 pub struct MethodError;

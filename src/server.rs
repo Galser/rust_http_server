@@ -36,18 +36,24 @@ impl Server {
         let listener = TcpListener::bind(&self.addr).unwrap();
         
         // listener loops
-        'main: loop {
+        loop {
              match listener.accept() {
                 Ok((mut stream, _)) =>  { 
                     println!("Listner is running");
                     let mut buffer = [0; 1024];
                     match stream.read(&mut buffer) { 
-                     Ok(bytes) => {
+                     Ok(_) => {
                         println!("Received a request {}", String::from_utf8_lossy(&buffer));
 //                        Request::try_from(&buffer as &[u8]);
                         match Request::try_from(&buffer[..]) {
-                            Ok(request) => {},
-                            Err(e) => println!("Failed to parse a request {}", e),
+                            Ok(request) => { 
+                                println!("All good");
+                                dbg!(request); 
+                            },
+                            Err(e) => { 
+                                println!("XFailed to parse a request {}", e);
+                                println!("Buffer ! {:?}", buffer);
+                            },    
                         }
                      },
                      Err(e) => println!("failed to read from connection {}", e),
