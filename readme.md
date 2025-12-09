@@ -12,6 +12,8 @@ Part of the course "Learn Rust by Building Real Applications"
 ![Screenshot of stream read, Chrome request](/screenshots/first_request_from_chrome.png?raw=true "Listner screenshot of Chrome request")
 - Adddress in use error : 
 ![Screenshot of address already in use panic in unwrap](/screenshots/addr_in_use.png "Addr already in use")
+- Query debug bia derives : 
+![Screenshot of query with parameter via debug](/screenshots/query_debuf_with_parameters.png "Query debug screenshot")
 
 
 # TODO
@@ -19,7 +21,9 @@ Part of the course "Learn Rust by Building Real Applications"
 [x] implement bare minimum
 [x] make tcp stream reads and screen echo
 [X] parse custom errors
-[ ] lifetimes
-[ ] derives
-[ ] query string as HashMap
-[ ] 
+[x] lifetimes
+[x] derives
+[x] query string as HashMap
+[ ] modeling HTTP response
+[ ] Copy/Clone
+[ ] Writing data to TCP stream
