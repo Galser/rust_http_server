@@ -10,7 +10,7 @@ pub struct Server {
 
 /// Server struc
 impl Server {
-    /// Retursn new  instance of server with given "addr"
+    /// Returns new  instance of server with given "addr"
     ///
     /// # Arguments :
     ///
@@ -24,15 +24,11 @@ impl Server {
         Self { addr }
     }
 
+    #[deny(clippy::unused_io_amount)]
     pub fn run(self) {
         println!("Listening on {}", self.addr);
 
-        // let listener = match TcpListener::bind(&self.addr) {
-        //     Ok(tcplistener) => tcplistener,
-        //     Err(e) => panic!("Can't bind : {}", e),
-        // };
-
-        // or simply unwrap it, as we can fail here 
+        //  simply unwrap it, as we can fail here 
         let listener = TcpListener::bind(&self.addr).unwrap();
         
         // listener loops
@@ -44,7 +40,6 @@ impl Server {
                     match stream.read(&mut buffer) { 
                      Ok(_) => {
                         println!("Received a request {}", String::from_utf8_lossy(&buffer));
-//                        Request::try_from(&buffer as &[u8]);
                         match Request::try_from(&buffer[..]) {
                             Ok(request) => { 
                                 println!("All good");
