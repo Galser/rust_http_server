@@ -52,7 +52,7 @@ impl Server {
                             },
                             Err(e) => { 
                                 println!("XFailed to parse a request {}", e);
-                                println!("Buffer ! {:?}", buffer);
+//                                println!("Buffer ! {:?}", buffer);
                             },    
                         }
                      },

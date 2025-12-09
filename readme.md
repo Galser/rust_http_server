@@ -12,8 +12,10 @@ Part of the course "Learn Rust by Building Real Applications"
 ![Screenshot of stream read, Chrome request](/screenshots/first_request_from_chrome.png?raw=true "Listner screenshot of Chrome request")
 - Adddress in use error : 
 ![Screenshot of address already in use panic in unwrap](/screenshots/addr_in_use.png "Addr already in use")
-- Query debug bia derives : 
+- Query debug via derives : 
 ![Screenshot of query with parameter via debug](/screenshots/query_debuf_with_parameters.png "Query debug screenshot")
+- Query with multiple parameters debug via derives  : 
+![Screenshot of query with multi parameter via debug](/screenshots/query_debug_with_multi_parameters.png "Multi parameter Query debug screenshot")
 
 
 # TODO
