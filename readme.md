@@ -16,16 +16,19 @@ Part of the course "Learn Rust by Building Real Applications"
 ![Screenshot of query with parameter via debug](/screenshots/query_debuf_with_parameters.png "Query debug screenshot")
 - Query with multiple parameters debug via derives  : 
 ![Screenshot of query with multi parameter via debug](/screenshots/query_debug_with_multi_parameters.png "Multi parameter Query debug screenshot")
-
+- HTTP 404 responce generated from Display trait-enabled struct
 
 # TODO
 
 [x] implement bare minimum
 [x] make tcp stream reads and screen echo
-[X] parse custom errors
+[x] parse custom errors
 [x] lifetimes
 [x] derives
 [x] query string as HashMap
-[ ] modeling HTTP response
-[ ] Copy/Clone
-[ ] Writing data to TCP stream
+[x] modeling HTTP response
+[x] Copy/Clone
+[x] Writing data to TCP stream
+[x] Custom HTTP repsonses
+
+
