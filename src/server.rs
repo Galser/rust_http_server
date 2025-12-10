@@ -42,7 +42,8 @@ impl Server {
                         match Request::try_from(&buffer[..]) {
                             Ok(request) => { 
                                 dbg!(request);
-                                let response = Response::new(StatusCode::NotFound, None);
+                                let response = Response::new(StatusCode::Ok, 
+                                    Some("<h1>it works</h1>".to_string()));
                                 write!(stream, "{}", response); 
                             },
                             Err(e) => { 

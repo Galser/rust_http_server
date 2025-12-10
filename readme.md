@@ -18,6 +18,7 @@ Part of the course "Learn Rust by Building Real Applications"
 ![Screenshot of query with multi parameter via debug](/screenshots/query_debug_with_multi_parameters.png "Multi parameter Query debug screenshot")
 - HTTP 404 responce generated from Display trait-enabled struct
 ![Screenshot of 404 reponcse to CURL request](/screenshots/http_404_response.png "HTTP 404 repsonces to CURL request")
+- HTTP 200 and embedded HTML "It Works!" ![Screenshot of Chrome rendering repsonse from our server](/screenshots/http200_and_embedded_html.png "Screenshot of Chrome on the left site rendering repsonse from our server runiing on the right side in shell")
 
 
 # TODO
