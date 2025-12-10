@@ -17,6 +17,8 @@ Part of the course "Learn Rust by Building Real Applications"
 - Query with multiple parameters debug via derives  : 
 ![Screenshot of query with multi parameter via debug](/screenshots/query_debug_with_multi_parameters.png "Multi parameter Query debug screenshot")
 - HTTP 404 responce generated from Display trait-enabled struct
+![Screenshot of 404 reponcse to CURL request](/screenshots/http_404_response.png "HTTP 404 repsonces to CURL request")
+
 
 # TODO
 
